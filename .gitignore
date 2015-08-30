@@ -1,0 +1,5 @@
+#ignore 
+.metadata
+.DS_Store
+game.sublime-workspace
+node_modules

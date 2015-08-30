@@ -6,9 +6,16 @@ define(function (require, exports) {
 
     // 动态列表的部分
     var pageObj =  {
+
+        // 加载更多按钮的选择器
         loadMoreElm: null,
-        attrData: [], // 除page外要传给url的参数的名字
+
+        // 除page外要传给url的参数的名字
+        attrData: [],
+        
+        // 服务器的url
         url: null,
+
         // 当翻页后还有下一页时的样式
         haveMorePageStyle: function () {
             // var elm = $(this.loadMoreElm);
@@ -16,6 +23,7 @@ define(function (require, exports) {
             // elm.html('查看更多');
             // elm.removeClass('middle-pageNomore');
         },
+
         // 当翻页后没有下一页时的样式
         noMorePageStyle: function () {
             // var elm = $(this.loadMoreElm);
@@ -23,6 +31,7 @@ define(function (require, exports) {
             // elm.html('没有更多评论');
             // elm.addClass('middle-pageNomore');
         },
+
         // 将数据渲染成Dom并插入列表后
         appendListToDom: function (serverData) {
             // var html = etpl.render('activityList', serverData.data);
@@ -34,8 +43,6 @@ define(function (require, exports) {
             // var html = etpl.render('comment', comment);
             // $('.middle-content').html(html);
         },
-
-
 
         // 初始化page按钮的样式
         // {attrName: attrVal}
@@ -150,9 +157,7 @@ define(function (require, exports) {
             return child;
         }
     };
-
     return pageObj;
-
 });
 
 // =======================================
