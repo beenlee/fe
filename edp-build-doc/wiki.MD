@@ -17,6 +17,14 @@ EDP很重要的一个功能就是通过`edp build`来构建项目。在[构建�
     * [VariableSubstitution](#variablesubstitution)
     * [MD5Renamer](#md5renamer)
     * [OutputCleaner](#outputcleaner)
+    * [BabelProcessor](#BabelProcessor)
+    * [BcsUploader](#BcsUploader)
+    * [CssSpriter](#CssSpriter)
+    * [HtmlMinifier](#HtmlMinifier)
+    * [Html2JsCompiler](#Html2JsCompiler)
+    * [ManifestCompiler](#ManifestCompiler)
+    * [ReplaceDebug](#ReplaceDebug)
+    * [StringReplace](#StringReplace)
 * [Custom Processor](#custom-processor)
 	* [Processor的运行过程](#processor%E7%9A%84%E8%BF%90%E8%A1%8C%E8%BF%87%E7%A8%8B)
 	* [通过Object自定义processor](#%E9%80%9A%E8%BF%87object%E8%87%AA%E5%AE%9A%E4%B9%89processor)
@@ -61,13 +69,17 @@ EDP内置了一些常用的`Processors`，基本能够满足前端项目的构�
 编译`less`文件，并对其他文件中`less`资源的引用替换成`css`。具体有：
 
 1. \*.less编译为\*.css
-2. entryExtnames指定的那些文件，把`<link href="*.less">`替换为`<link href="*.css">`
+2. entryFiles指定入口文件，把`<link href="*.less">`替换为`<link href="*.css">`
 3. \*.js中通过插件引用\*.less的地方修改为\*.css
 
 ```
 new LessCompiler({
     files: [ '*.less' ],
-    entryExtnames: 'html,php,tpl'
+    /* entryExtnames: 'html,php,tpl' 旧版本使用 新版本种兼容但不推荐 推荐使用entryFiles*/
+    entryFiles: [
+        '*.html', '*.htm', '*.phtml',
+        '*.tpl', '*.vm', '*.js'
+    ]
 });
 ```
 
@@ -126,14 +138,19 @@ new LessCompiler({
 StylusCompiler的功能跟LessCompiler类似。编译`styl`文件，并对其他文件中`styl`资源的引用替换成`css`。
 
 1. \*.styl编译为\*.css
-2. entryExtnames指定的那些文件，把`<link href="*.styl">`替换为`<link href="*.css">`
+2. entryFiles指定入口文件，把`<link href="*.styl">`替换为`<link href="*.css">`
 3. \*.js中通过插件引用\*.styl的地方修改为\*.css
 
 
 ```
 new StylusCompiler({
     files: [ '*.styl' ],
-    entryExtnames: 'html,php,tpl'
+     /* entryExtnames: 'html,php,tpl' 旧版本使用 新版本种兼容但不推荐 推荐使用entryFiles */
+    entryFiles: [
+        '*.html', '*.htm', '*.phtml',
+        '*.tpl', '*.vm', '*.js'
+    ]
+
 });
 ```
 
@@ -152,6 +169,7 @@ new StylusCompiler({
 ```
 
 如果想要输出的css是压缩之后的，可以添加参数`{ compress: true }`即可，一定程度上可以代替`CssCompressor`的功能.
+
 
 ##### entryFiles
 
@@ -213,7 +231,7 @@ new JsCompressor({
 
 #### files
 
-`Array.<string>`，**默认值**是`[ '*.js' ]`。
+`Array.<string>`，**默认值**是`[ '*.js', '!*.min.js' ]`。
 
 ##### compressOptions
 
@@ -501,6 +519,237 @@ new MD5Renamer( {
 ##### files
 
 `Array.<string>`，**默认值**是：`[ '*.less', '*.styl', '*.ts', '*.coffee' ]`
+
+### 新的processor
+
+#### BabelProcessor
+
+此处理器的作用是使用转译器 *[babel](https://babeljs.io)* 将项目使用ES6语法的js代码转为ES5代码。
+
+下面是`BabelProcessor`的参数说明：
+
+##### files
+
+`Array.<string>`，**默认值**是：`[ '*.es6', '*.es' ]`
+
+##### compileOptions
+
+`Object, babel` 的参数，默认值是：
+
+```
+{
+    loose: 'all',
+    modules: 'amd',
+    compact: false,
+    ast: false,
+    blacklist: ['strict']
+}
+```
+
+详细信息请参考[Options for babel transpiling.](https://babeljs.io/docs/usage/options/#options)
+
+#### BcsUploader
+
+可以使用这个处理器将文件上传到 bcs(百度云存储) 中
+
+```
+new BcsUploader({
+    ak: 'ak',
+    sk: 'sk',
+    bucket: 'weigou-baidu-com',
+    prefix: 'bcj-static/20140624',
+    concurrent: 5,
+    files: [
+    ]
+})
+```
+
+下面是`BcsUploader`的参数说明：
+
+##### files
+
+`Array.<string>` 处理器要处理的文件 **默认值**是：`['*.js', '*.css', '*.less']`
+
+##### ak
+
+`string` AccessKey bcs提供的
+
+##### sk
+
+`string` SecretKey bcs提供的
+
+##### bucket
+
+`string` bcs提供的bucket
+
+##### prefix
+
+`string` 上传文件的路径的前缀
+
+##### concurrent
+
+`number` 上传并发数，**默认值**是：5
+
+##### maxSize
+
+`number` 文件最大尺寸 **默认值**是：10 * 1024 * 1024
+
+#### CssSpriter
+
+通过[css-spriter](https://github.com/quyatong/CssSpriter)工具分析css文件中引用的图片文件构建成雪碧图，然后自动修改css文件中的图片引用信息
+
+```
+new CssSpriter({
+    files: [
+    ]
+})
+```
+
+下面是`CssSpriter`的参数说明：
+
+##### files
+
+`Array.<string>` 处理器要处理的文件 **默认值**是：`[]`
+
+
+#### htmlMinifier
+
+此处理器默认通过使用[html-minifier](https://github.com/kangax/html-minifier)工具分析html文档的内容，对html文档进行压缩，有效的减小项目内html文档的体积
+
+```
+new htmlMinifier({
+    files: [],
+    minifyOptions: {}
+})
+```
+下面是`htmlMinifier`的参数说明:
+
+##### files
+
+`Array.<string>` 处理器要处理的文件 **默认值**是：`['*.html', '*.tpl.html']`
+
+##### minifyOptions
+
+`Object, html-minifier` 的参数，默认值是：
+
+```
+{
+    ignoreCustomComments: [
+        /^\s*(\/)?([a-z]+)\s*(?::([\s\S]*))?$/
+    ]
+}
+```
+ 更多配置参数请参考：[html-minifier](https://github.com/kangax/html-minifier)
+
+#### html2js-compiler
+
+将html文档转换成js文档，在js中引用时可以解决跨域的问题
+
+下面是`htmlMinifier`的参数说明:
+
+##### files
+
+`Array.<string>` 处理器要处理的文件 **默认值**是：`null`
+
+##### extnames
+
+使用文件后缀名配置要处理的文件，与参数`files`功能相同，**默认值**是：`['hjs', 'mustcahe']` 
+
+**需要注意的是**：如果没有配置`files`和`extnames`处理器会自动使用`extnames`的默认值作为要处理的文件，当配置了`files`时处理器会忽略`extnames`的配置
+
+##### clean
+
+`boolean` **默认值**是：`false` 配置为true将只发出一条警告，[html2js](https://github.com/junmer/html2js)不去处理文件
+
+##### wrap
+
+`string` 表示转换后js代码的包装器类型 **默认值**是：`amd` 
+
+可选值：`null，amd，commonjs` 分别表示无包装，amd包装，CommonJS包装
+
+各参数具体效果请参考:[html2js](https://github.com/junmer/html2js)
+
+##### mode
+
+`string` 表示html转换成js代码后的代码样式 **默认值**是：`null` 
+
+可选值：
+
+`null 或者 default`:表示保持原html文档的格式
+
+`compress`:清除原文档中每行开始和结束位置两端的空白以及转义字符
+
+`format`:整理成符合[规范](https://github.com/ecomfe/spec/blob/master/javascript-style-guide.md#建议-使用-数组-或--拼接字符串)的js代码
+
+各参数具体效果请参考:[html2js](https://github.com/junmer/html2js)
+
+#### ManifestCompiler（***）
+
+这个处理器用于构建项目的manifest
+
+下面是`ManifestCompiler`的参数说明：
+
+##### manifests
+
+`Array.<Object>` 配置文件数组 **默认值**是：`[]`
+
+```
+manifests : [
+    {
+        cachePage: cachePage,
+        autoCache: true,
+        prefixPath: prefixPath,
+        manifestName: manifestName,
+        cache: []
+        fallback: fallback
+    }
+]
+```
+
+#### replaceDebug
+
+修正DEBUG变量，将window.DEBUG的值改为false
+
+下面是`replaceDebug`的参数说明:
+
+##### files
+
+`Array.<string>` 处理器要处理的文件 **默认值**是：`null`
+
+##### extnames
+
+使用文件后缀名配置要处理的文件，与参数`files`功能相同，**默认值**是：`['html']` 
+
+**需要注意的是**：如果没有配置`files`和`extnames`处理器会自动使用`extnames`的默认值作为要处理的文件，当配置了`files`时处理器会忽略`extnames`的配置
+
+#### stringReplace
+
+此处理器用于字符串替换
+
+下面是`stringReplace`的参数说明:
+
+##### files
+
+`Array.<string>` 处理器要处理的文件 **默认值**是：`null`
+
+##### replacements
+
+`Array.<Object>`，用于指定要匹配的字符信息，以及要被替换成的字符串或者返回字符串的函数如下示例：
+
+```
+[
+    {
+        from: 'foo',
+        to: 'bar'
+    },
+    {
+       from: /(\w+)\s*, \s*(\w+)/,
+       to: function(word, first, second){
+           return '' + second + first;
+       }
+    }
+]
+```
 
 ### Custom Processor
 
