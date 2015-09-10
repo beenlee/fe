@@ -683,29 +683,6 @@ new htmlMinifier({
 
 各参数具体效果请参考:[html2js](https://github.com/junmer/html2js)
 
-#### ManifestCompiler（***）
-
-这个处理器用于构建项目的manifest
-
-下面是`ManifestCompiler`的参数说明：
-
-##### manifests
-
-`Array.<Object>` 配置文件数组 **默认值**是：`[]`
-
-```
-manifests : [
-    {
-        cachePage: cachePage,
-        autoCache: true,
-        prefixPath: prefixPath,
-        manifestName: manifestName,
-        cache: []
-        fallback: fallback
-    }
-]
-```
-
 #### replaceDebug
 
 修正DEBUG变量，将window.DEBUG的值改为false
