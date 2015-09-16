@@ -244,8 +244,7 @@ new JsCompressor({
 
 ##### sourceMapOptions
 
-`Object`，<del>现在不建议使用，功能支持的不完善</del>
-
+`Object`，生成 [JavaScript Source Map](http://www.html5rocks.com/en/tutorials/developertools/sourcemaps/) 文件，默认值是: `{ enable: false, root: 'sourcemap', host: null }` `enable`: 表示功能是否开启, `root`: 决定了 output 目录中的source map所在的目录, `host`: 决定了 sourceMappingURL 的前缀
 
 #### ModuleCompiler
 
@@ -429,7 +428,7 @@ replacements: [
 
 如果合并之后，如果想要把合并之后的模板输出为一个AMD的模块，那么请把这个参数值设置为一个模板插件的Id，例如`jstpl`。因为使用`xhr`的方式加载模板的插件跟使用`require`的方式来加载模板的插件应该是不一样的，所以需要单独设置一下这个参数的值。
 
-注意：`outputType`和`outputPluginId`必须同时设置才会有效，否则没有效果。
+注意：`outputPluginId`必须同时设置才会有效，否则没有效果。
 
 如果我们把最终合并的模板输出为一个AMD的模块，那么就可以把模板也部署到Cookieless Domain下面了，不再受限于xhr的跨域问题的限制。
 
