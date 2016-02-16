@@ -1,0 +1,51 @@
+@import 'est/2.0.4/src/all.less';
+@import (inline) 'ref.less';
+@support-ie-version: 10;
+@default-font-size: 14px;
+
+.test-class, .test-class-a {
+    .clearfix();
+    height: 100px;
+}
+
+.alert:extend(.test-class){
+    width: 100px;
+}
+
+#outer {
+    color: rgb(255, 255, 255);
+    & > .inner {
+        color: raga(11,11,11,0.5);
+
+    }
+}
+
+
+.c {
+    
+    &:extend(#outer > .inner);
+    #outer > .inner();
+    .mixin(#ccc);
+}
+
+span{
+    margin: 10;
+}
+
+p {
+
+}
+.mixin(@color) {
+    
+    background: @color;
+}
+.mixin(@color; @padding:2) {
+    color: @color;
+    padding: @padding;
+    .sum(1;2);
+    width: @sum;
+}
+
+.sum (@a, @b) {
+    @sum : @a + @b;
+}

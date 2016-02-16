@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>video1</title>
+    <link rel="stylesheet" href="http://cp01-qa-shifen-002.cp01.baidu.com:8506/mabroad/asset/app_f48f8382.css">
+</head>
+<body class="result-op">
+<nav id="nav">
+    <i class="i-menu OP_LOG_BTN" ></i>
+    <i class="nav-title">title</i>
+</nav>
+<ul id="nav-menu">
+    <a href="/miletus?wd=托福&stgSpace=edu" class="nav-menu-item">
+        <li>托福</li>
+    </a>
+    <a href="/miletus?wd=托福&stgSpace=edu" class="nav-menu-item">
+        <li>托福</li>
+    </a>
+    <a href="/miletus?wd=托福&stgSpace=edu" class="nav-menu-item">
+        <li>托福</li>
+    </a>
+    <a href="/miletus?wd=托福&stgSpace=edu" class="nav-menu-item">
+        <li>托福</li>
+    </a>
+</ul>
+<div id="nav-mask" ></div>
+
+<div class="course-list-wrap">
+    <ul class="course-list-container">
+        <li>
+            <div class="video-wrap">
+                <div class="video-fake-player">
+                    <img src="http://boscdn.bpc.baidu.com/mms-res/fFhO6RhbZUnQuW0-9VXCZCV3hVX-ucSGhVVq9VXCBkAa0WsY0k-WBdRenFvkrUjenGv3XURbBWVIBICbZmhI.png">
+                    <div class="course-play"></div>
+                </div>
+                <!-- width="1" height="1" -->
+                <video  src="http://media8.smartstudy.com/media/pd/video/product/1fab064c5f1511e5a1f900163e0053c21442698003549686.mp4?hmsr=%E7%99%BE%E5%BA%A6%E6%95%99%E8%82%B2(cps)&amp;hmmd=&amp;hmpl=&amp;hmkw=&amp;hmci=" class="OP_LOG_BTN video-hide" controls></video>
+            </div>
+            <div class="course-detail">
+                <div class="course-title">协议-挑战100分托福精讲精练外教全程VIP教学督导班</div>
+                <div class="course-detail-item">
+                    <span>老师：</span>
+                    <span>翟少成等7人</span>
+                </div>
+                <div class="course-detail-item">
+                    <span>价格：</span>
+                    <span class="high-light">￥6600.00&nbsp;</span>
+                    <del></del>
+                    <span>&nbsp;(216课时)</span>
+                </div>
+                <div class="course-detail-item">
+                    <span class="course-tag course-tag-type1">综合课程</span>
+                    <span class="course-tag course-tag-type2">协议保分</span>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="video-wrap">
+                <div class="video-fake-player">
+                    <img src="http://boscdn.bpc.baidu.com/mms-res/fFhO6RhbZUnQuW0-9VXCZCV3hVX-ucSGhVVq9VXCBkAa0WsY0k-WBdRenFvkrUjenGv3XURbBWVIBICbZmhI.png">
+                    <div class="course-play"></div>
+                </div>
+                <video webkit-playsinline="" width="1" height="1" src="http://media8.smartstudy.com/media/pd/video/product/1fab064c5f1511e5a1f900163e0053c21442698003549686.mp4?hmsr=%E7%99%BE%E5%BA%A6%E6%95%99%E8%82%B2(cps)&amp;hmmd=&amp;hmpl=&amp;hmkw=&amp;hmci=" class="OP_LOG_BTN video-hide"  x-webkit-airplay="" controls="" style="left:0;"></video>
+            </div>
+            <div class="course-detail">
+                <div class="course-title">协议-挑战100分托福精讲精练外教全程VIP教学督导班</div>
+                <div class="course-detail-item">
+                    <span>老师：</span>
+                    <span>翟少成等7人</span>
+                </div>
+                <div class="course-detail-item">
+                    <span>价格：</span>
+                    <span class="high-light">￥6600.00&nbsp;</span>
+                    <del></del>
+                    <span>&nbsp;(216课时)</span>
+                </div>
+                <div class="course-detail-item">
+                    <span class="course-tag course-tag-type1">综合课程</span>
+                    <span class="course-tag course-tag-type2">协议保分</span>
+                </div>
+            </div>
+        </li>
+    </ul>
+
+    <div class="global-player-wrap" style="display:none;">
+        <div class="global-player-mask"></div>
+        <div class="global-player-close">
+            <i class="">退出播放</i>
+        </div>
+        <video webkit-playsinline="" width="100%" class="global-video-player" x-webkit-airplay="" controls=""></video>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var dom = {
+        show: function (dom) {
+            dom.style.display = 'block';
+        },
+        hide: function (dom) {
+            dom.style.display = 'none';
+        },
+        addClass: function (element, className) {
+            // 优先使用classList. 在iOS 5, Android 3 之后开始支持
+            if (element.classList) {
+                element.classList.add(className);
+            }
+            else {
+                var classes = element.className
+                    ? element.className.split(/\s+/) : [];
+
+                for (var i = 0, n = classes.length; i < n; i++) {
+                    if (classes[i] === className) {
+                        return element;
+                    }
+                }
+                classes.push(className);
+                element.className = classes.join(' ');
+            }
+
+            return element;
+        },
+
+        removeClass: function (element, className) {
+            if (element.classList) {
+                element.classList.remove(className);
+            }
+            else {
+                var classes = element.className
+                    ? element.className.split(/\s+/) : [];
+
+                for (var i = 0, n = classes.length; i < n; i++) {
+                    if (classes[i] === className) {
+                        classes.splice(i, 1);
+                        i--;
+                    }
+                }
+                element.className = classes.join(' ');
+            }
+
+            return element;
+        }
+
+    };
+
+    var menuEle = document.querySelector('#nav .i-menu');
+    var mask = document.querySelector('#nav-mask');
+    var menu = document.querySelector('#nav-menu');
+    menuEle.addEventListener('click', function () {
+        mask.style.display = 'block';
+        menu.style.display = 'block';
+    });
+    mask.addEventListener('click', function () {
+        mask.style.display = 'none';
+        menu.style.display = 'none';
+    });
+
+
+    /**
+     * 全屏播放
+     *
+     *  @param  {HTMLDom} element 要全屏的元素
+     */
+    function launchFullScreen(element) {
+        if (element.requestFullScreen) {
+            element.requestFullScreen();
+        }
+        else if (element.mozRequestFullScreen) {
+            element.mozRequestFullScreen();
+        }
+        else if (element.webkitRequestFullScreen) {
+            element.webkitRequestFullScreen();
+        }
+    }
+
+    /**
+     * 播放视频
+     *
+     * @param  {HTMLDom} videoElm video标签的Dom节点
+     * @param  {HTMLDom} fakePlayer 代替播放器图片容器
+     */
+    function videoPlay(videoElm, fakePlayer) {
+
+        videoElm.play();
+        launchFullScreen(videoElm);
+        return;
+        var ua = navigator.userAgent;
+        var ios = ua.match(/iPhone|iPad|iPod/);
+        var uc = ua.match(/(UCBrowser)\/([\d.]+)/);
+        var baidu = ua.match(/(baidubrowser)|(baiduboxapp)\/([\d.]+)/);
+        var wechat = ua.match(/(MicroMessenger)\/([\d._]+)/);
+        // QQ软件里的浏览器,既有MQQBrowser又有QQ/5.8.0
+        var qq = ua.match(/(QQ)\/([\d.]+)/) || ua.match(/(MQQBrowser)\/([\d.]+)/);
+        var flag = !ios && (uc || baidu || qq || wechat);
+        if (flag) {
+            // videoElm.play();
+            // launchFullScreen(videoElm);
+            var gpwNode = document.querySelector('.global-player-wrap');
+            var courseList = document.querySelector('.course-list-container');
+            dom.hide(courseList);
+            dom.show(gpwNode);
+            var gPlayer = document.querySelector('.global-video-player');
+            // gPlayer.poster = videoElm.poster;
+            gPlayer.src = videoElm.src;
+            setTimeout(function () {
+                gPlayer.play();                
+            }, 10)
+        }
+        else {
+            videoElm.play();
+            dom.hide(fakePlayer);
+            dom.removeClass(videoElm, 'video-hide');
+            dom.addClass(videoElm, 'video-show');
+        }
+    }
+
+    [].forEach.call(document.querySelectorAll('.course-play'), function (elm) {
+        elm.addEventListener('click', function (e) {
+            var fakePlayer = e.target.parentNode;
+            var video = fakePlayer.nextElementSibling
+            videoPlay(video, fakePlayer);
+        });
+    });
+
+</script>
+</body>
+</html>

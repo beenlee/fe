@@ -1,0 +1,45 @@
+.p {
+    .pp(){
+        border: 1px;    
+    }
+    font-size: 1px;
+}
+.p2() {
+    border: 3px;
+}
+.test-class,
+.test-class-a,
+.alert {
+  height: 100px;
+}
+.test-class:before,
+.test-class-a:before,
+.test-class:after,
+.test-class-a:after {
+  display: table;
+  content: "";
+}
+.test-class:after,
+.test-class-a:after {
+  clear: both;
+}
+.alert {
+  width: 100px;
+}
+#outer {
+  color: #ffffff;
+}
+#outer > .inner,
+.c {
+  color: raga(11, 11, 11, 0.5);
+}
+.c {
+  color: raga(11, 11, 11, 0.5);
+  background: #cccccc;
+  color: #cccccc;
+  padding: 2;
+  width: 3;
+}
+span {
+  margin: 10;
+}

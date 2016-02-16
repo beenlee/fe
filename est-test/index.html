@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html style="height: 100%;">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="screen-orientation" content="portrait">
+    <title>hello</title>
+</head>
+<body style="height: 100%;">
+    <script src="//s1.bdstatic.com/r/www/cache/ecom/esl/2-0-6/esl.source.js"></script>
+
+    <!--    
+    <script src="//requirejs.org/docs/release/2.1.11/comments/require.js"></script>
+    -->
+
+    <script type="text/javascript">
+    typeof requirejs === 'undefined' && (requirejs = require);
+    requirejs.config({
+        'baseUrl': './src',
+        'paths': {},
+        'packages': [
+            {
+                'name': 'jquery',
+                'location': '../dep/jquery/1.9.1/src',
+                'main': 'jquery.min'
+            }
+        ]
+    });
+    require(['core/main'], function (main) {
+        main.init();
+    });
+    </script>
+    <script src="./src/main.js">
+
+    </script>
+</body>
+</html>

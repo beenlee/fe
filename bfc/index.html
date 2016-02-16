@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BFC</title> 
+    <style type="text/css">
+    
+    .wrap {
+    }
+    main {
+        display: block;
+        background: red;
+        height:200px;
+        overflow: hidden;
+    }
+    .left {
+        float: left;
+        background: #333;
+        width: 100px;
+        margin-right: 20px;
+    }
+    .right {
+        float: right;
+        background: #999;
+        width: 100px;
+        margin-left: 20px;
+    }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <div class="left">left</div>
+    <div class="right">right</div>
+    <main>
+        <a href="aaa.php">mainsadsadsadsadfsyudiyyu fsyudyufdsyufdyusyufdsyufuy <a href="bb.php" style="color:#ffffff;">dsyufdsyufyudsyu</a> dsyufdsyufyudsyu</a>
+    </main>
+</div>
+</body>
+</html>
