@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <style type="text/css">
+        body {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+    </style>
+    <body>
+
+    <div id="echarts-wrap1" style="width: 600px;height:400px;"></div>
+    <div id="echarts-wrap2" style="width: 600px;height:400px;"></div>
+    <div id="echarts-wrap3" style="width: 600px;height:400px;"></div>
+    <div id="echarts-wrap4" style="width: 600px;height:400px;"></div>
+    <div id="echarts-wrap5" style="width: 600px;height:400px;"></div>
+    <div id="echarts-wrap6" style="width: 600px;height:400px;"></div>
+
+
+    <script src="http://s1.bdstatic.com/r/www/cache/ecom/esl/2-1-4/esl.js"></script>
+    <script type="text/javascript">
+        require.config({
+            "baseUrl": "src",
+            "paths": {},
+            "packages": [
+                {
+                    "name": "echarts",
+                    "main": "echarts",
+                    "location": "../dep/echarts/3.1.2/dist"
+                },
+                {
+                    "name": "zrender",
+                    "location": "../dep/zrender/3.0.6/src",
+                    "main": "lib/zrender"
+                }
+            ]
+        });
+        require(['main'], function (app) {
+            app.init();
+        });
+    </script>
+    </body>
+</html>
